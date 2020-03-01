@@ -12,16 +12,11 @@ program.parse(process.argv);
 
 const message = program.args.join(" ")
 
-if (program.minutes) {
-    const { minutes } = program.opts()
-    const parsedMinutes = parseFloat(minutes)
-    console.log(`Reminding you in ${parsedMinutes} minute(s).`)
-    spawnReminder(parsedMinutes, message, program.alert)
-} else if (program.hours) {
-    const { hours } = program.opts()
-    const parsedHours = parseFloat(hours)
-    console.log(`Reminding you in ${parsedHours} hour(s).`)
-    spawnReminder(hours * 60, message, program.alert)
+if (program.minutes || program.hours) {
+    const { minutes, hours } = program.opts()
+    const totalMinutes = toMinutes(minutes, hours)
+    console.log(`Reminding you in ${totalMinutes} minute(s).`)
+    spawnReminder(minutes, message, program.alert)
 }
 
 function spawnReminder(minutes, message, useAlert) {
@@ -30,4 +25,11 @@ function spawnReminder(minutes, message, useAlert) {
             stdio: 'inherit',
             detached: true
     }).unref()
+}
+
+function toMinutes(minuteString, hourString) {
+    const mins = parseFloat(minuteString) || 0
+    const hrs = parseFloat(hourString) || 0
+
+    return hrs * 60 + mins
 }
