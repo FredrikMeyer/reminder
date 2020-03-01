@@ -5,17 +5,26 @@ const process = require('process');
 
 const { spawn } = require('child_process');
 
-program.option('-i, --in <minutes>', 'Remind in x minutes');
-program.option('-m, --message <message>', 'Message')
+program.option('-m, --minutes <minutes>', 'Remind in x minutes');
+program.option('-h, --hours <hours>', 'Remind in x hours');
 program.parse(process.argv);
 
+const message = program.args.join(" ")
 
-if (program.in && program.message) {
-    const minutesAsText = program.opts().in
-    const minutes = parseFloat(minutesAsText)
-    console.log(`Reminding you in ${minutes} minute.`)
+if (program.minutes) {
+    const { minutes } = program.opts()
+    const parsedMinutes = parseFloat(minutes)
+    console.log(`Reminding you in ${parsedMinutes} minutes.`)
+    spawnReminder(parsedMinutes, message)
+} else if (program.hours) {
+    const { hours } = program.opts()
+    const parsedHours = parseFloat(hours)
+    console.log(`Reminding you in ${parsedHours} minutes.`)
+    spawnReminder(hours * 60, message)
+}
 
-    spawn('./notifyIn.js', [JSON.stringify({minutes, message: program.message})], {
+function spawnReminder(minutes, message) {
+    spawn('./notifyIn.js', [JSON.stringify({minutes, message: message})], {
         stdio: 'inherit',
         detached: true
     }).unref()

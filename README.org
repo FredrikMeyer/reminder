@@ -9,7 +9,7 @@ npm install && npm link
 Then
 
 #+begin_src bash
-remind -i 10 -m "Take a break."
+remind -m 10 "Take a break."
 #+end_src
 
 Then you will be reminded in ten minutes to take a break.
