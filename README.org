@@ -12,6 +12,6 @@ Then
 remind -i 10 -m "Take a break."
 #+end_src
 
-
-
 Then you will be reminded in ten minutes to take a break.
+
+It is built on [[https://github.com/julienXX/terminal-notifier][terminal-notifier]], so you'll have to use a Mac.
