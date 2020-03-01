@@ -5,7 +5,6 @@ Usage:
 #+begin_src bash
 npm install && npm link
 #+end_src
-```
 
 Then
 
