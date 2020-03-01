@@ -7,7 +7,7 @@ const { spawn } = require('child_process');
 
 program.option('-m, --minutes <minutes>', 'Remind in x minutes');
 program.option('-h, --hours <hours>', 'Remind in x hours');
-program.option('-a, --alert', 'Use alert instead of notification.')
+program.option('-a, --alert', 'Use alert instead of notification. Only works on MacOS.')
 program.parse(process.argv);
 
 const message = program.args.join(" ")
