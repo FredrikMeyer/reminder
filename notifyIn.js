@@ -6,8 +6,12 @@ const { exec } = require('child_process');
 const {minutes, message, useAlert} = JSON.parse(process.argv[2])
 
 function notifyIn(minutes, message) {
+    const milliSeconds = minutes * 60 * 1000
     if (useAlert) {
-        exec(`/usr/bin/osascript -e 'display alert "Reminder" message "${message}"'`)
+        setTimeout(() => {
+            exec(`/usr/bin/osascript -e 'display alert "Reminder" message "${message}"'`)
+            console.log("Remind done.")
+        }, milliSeconds)
     } else {
         setTimeout(() => {
             notifier.notify({
@@ -17,7 +21,7 @@ function notifyIn(minutes, message) {
                 message
             });
             console.log("Reminding done.")
-        }, minutes * 60 * 1000)
+        }, milliSeconds)
     }
 }
 
