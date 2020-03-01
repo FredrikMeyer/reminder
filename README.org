@@ -1,0 +1,15 @@
+* Reminder
+
+Usage:
+
+```
+npm install && npm link
+```
+
+Then
+
+```
+remind -i 10 -m "Take a break."
+```
+
+Then you will be reminded in ten minutes to take a break.
