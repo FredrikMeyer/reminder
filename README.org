@@ -9,7 +9,13 @@ npm install && npm link
 Then
 
 #+begin_src bash
-remind -m 10 "Take a break."
+remind -m 15 -h 1 "Take a break."
 #+end_src
 
-Then you will be reminded in ten minutes to take a break.
+Then you will be reminded in one hour and fifteen minutes to take a break.
+
+Use the =-a= option to get an alert that does not disappear. It only works on MacOS:
+
+#+begin_src bash
+remind -a -m 10 "Call Santa."
+#+end_src
