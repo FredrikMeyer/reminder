@@ -1,0 +1,18 @@
+{
+  "name": "reminder",
+  "version": "0.0.1",
+  "description": "A simple terminal notifier tool.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fredrik Meyer",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^4.1.1",
+    "node-notifier": "^6.0.0"
+  },
+  "bin": {
+    "remind": "index.js"
+  }
+}
