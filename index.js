@@ -25,8 +25,9 @@ if (program.minutes) {
 }
 
 function spawnReminder(minutes, message, useAlert) {
-    spawn('./notifyIn.js', [JSON.stringify({minutes, message: message, Boolean(useAlert)})], {
-        stdio: 'inherit',
-        detached: true
+    spawn('./notifyIn.js', [
+        JSON.stringify({minutes, message: message, useAlert: Boolean(useAlert)})], {
+            stdio: 'inherit',
+            detached: true
     }).unref()
 }
