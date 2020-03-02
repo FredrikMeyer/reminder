@@ -15,7 +15,8 @@ const message = program.args.join(" ")
 if (program.minutes || program.hours) {
     const { minutes, hours } = program.opts()
     const totalMinutes = toMinutes(minutes, hours)
-    console.log(`Reminding you in ${totalMinutes} minute(s).`)
+    const remindDate = getTimeOfReminder(totalMinutes)
+    console.log(`Reminding you in ${totalMinutes} minute(s), at ${remindDate.getHours()}:${remindDate.getMinutes()}`)
     spawnReminder(minutes, message, program.alert)
 }
 
@@ -32,4 +33,12 @@ function toMinutes(minuteString, hourString) {
     const hrs = parseFloat(hourString) || 0
 
     return hrs * 60 + mins
+}
+
+function getTimeOfReminder(minutes) {
+    const milliSeconds = minutes * 60 * 1000
+    const currentDate = new Date()
+    const addedDateMillis = currentDate.getTime() + milliSeconds
+
+    return new Date(addedDateMillis)
 }
