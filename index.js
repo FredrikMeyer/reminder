@@ -17,7 +17,7 @@ if (program.minutes || program.hours) {
     const totalMinutes = toMinutes(minutes, hours)
     const remindDate = getTimeOfReminder(totalMinutes)
     console.log(`Reminding you in ${totalMinutes} minute(s), at ${remindDate.getHours()}:${remindDate.getMinutes()}`)
-    spawnReminder(minutes, message, program.alert)
+    spawnReminder(totalMinutes, message, program.alert)
 }
 
 function spawnReminder(minutes, message, useAlert) {
