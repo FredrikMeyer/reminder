@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "commander": "^4.1.1",
-    "node-notifier": "^6.0.0"
+    "node-notifier": "^8.0.1"
   },
   "bin": {
     "remind": "index.js"
